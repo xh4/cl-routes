@@ -35,10 +35,10 @@
   (match map '(nil) bindings))
 
 (defmethod match (map (uri string) &optional (bindings +no-bindings+))
-  (match map (puri:parse-uri uri) bindings))
+  (match map (quri:uri uri) bindings))
 
-(defmethod match (map (uri puri:uri) &optional (bindings +no-bindings+))
-  (match map (or (cdr (puri:uri-parsed-path uri)) '("")) bindings))
+(defmethod match (map (uri quri:uri) &optional (bindings +no-bindings+))
+  (match map (or (cdr (split-sequence #\/ (quri:uri-path uri))) '("")) bindings))
 
 (defmethod match (map (route route) &optional (bindings +no-bindings+))
   (match map (route-template route) bindings))

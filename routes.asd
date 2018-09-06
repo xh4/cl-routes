@@ -12,7 +12,7 @@
 (in-package #:routes-system)
 
 (defsystem routes
-  :depends-on (#:puri #:iterate #:split-sequence)
+  :depends-on (#:quri #:iterate #:split-sequence)
   :components ((:module "src"
                         :components ((:file "package")
                                      (:file "uri-template" :depends-on ("package"))
